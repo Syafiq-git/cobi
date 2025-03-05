@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Ramadan Mubarak</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+        
+        .navbar {
+            position: fixed;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            width: 100%;
+            padding: 10px 0;
+            background: #fff;
+            border-radius: 30px 30px 0 0;
+            box-shadow: 0 0 30px 0 rgba(0, 0, 0, .05);
+            z-index: 9999;
+        }
+        
+        .navbar button {
+            cursor: pointer;
+            width: 70px;
+            height: 60px;
+            border-radius: 20px;
+            background: transparent;
+            transition: all .25s ease;
+        }
+        
+        .navbar button:active:not(.plus) {
+            transform: scale(1.2);
+        }
+        
+        .navbar button.active {
+            color: #007BFF;
+        }
+        
+        .navbar button i {
+            font-size: 1.5rem;
+            pointer-events: none;
+        }
+        
+        @media (max-width: 768px) {
+            .navbar button i {
+                font-size: 2rem;
+            }
+        }
+        
+        .navbar button.plus {
+            height: 60px;
+            color: #fff;
+            background: #007BFF;
+            border-radius: 25px;
+            margin-top: -50px;
+            box-shadow: 0 10px 20px 0 #e84c4f66;
+        }
+        
+        .navbar button.plus:hover {
+            transform: translateY(-4px);
+        }
+        
+        .navbar .effect {
+            position: absolute;
+            width: 60px;
+            height: 50px;
+            border-radius: 18px;
+            background: #e84c4f26;
+            opacity: 0;
+        }
+        
+        section {
+            height: 100vh;
+            /* Set section height for scrolling */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            text-align: center;
+            background-color: #f0f0f0;
+            margin-bottom: 20px;
+        }
+        
+        section:nth-child(even) {
+            background-color: #e0e0e0;
+        }
+    </style>
+    <!-- BoxIcons v2.1.2 -->
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet">
+
+    <!-- AnimeJS v3.2.0 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.0/anime.min.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+    <section id="particles-js">
+        <div class="text">
+            <h1><span>Created by Codeweb.id</span></h1>
+            <h2>Ramadhan Mubarak</h2>
+            <h3 id="greeting">Happy Ramadhan To </h3>
+            <div class="mosque"></div>
+        </div>
+    </section>
+
+    <div class="navbar">
+        <div class="effect"></div>
+        <a href="#particles-js">
+            <button class="active">
+                <i class="bx bx-home"></i>
+            </button>
+        </a>
+        <a href="#profile">
+            <button>
+                <i class="bx bx-user"></i>
+            </button>
+        </a>
+        <a href="zakat.html">
+            <button class="plus">
+                <i class="bx bx-category"></i>
+            </button>
+        </a>
+        <a href="#work">
+            <button>
+                <i class="bx bx-briefcase"></i>
+            </button>
+        </a>
+        <a href="#chat">
+            <button>
+                <i class="bx bx-chat"></i>
+            </button>
+        </a>
+    </div>
+
+
+
+
+
+    <script src="particles.js"></script>
+    <script src="app.js"></script>
+
+    <script>
+        window.onload = function() {
+            let userName = prompt("Masukkan Nama Anda :");
+            if (userName) {
+                document.getElementById("greeting").textContent = "Happy Ramadhan To " + userName;
+            } else {
+                document.getElementById("greeting").textContent = "Happy Ramadhan To You";
+            }
+        }
+    </script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script>
+        const effect = document.querySelector('.effect');
+        const buttons = document.querySelectorAll('.navbar button:not(.plus)');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', e => {
+                const x = e.target.offsetLeft;
+
+                buttons.forEach(btn => {
+                    btn.classList.remove('active');
+                })
+
+                e.target.classList.add('active');
+
+                anime({
+                    targets: '.effect',
+                    left: `${x}px`,
+                    opacity: '1',
+                    duration: 600
+                })
+            })
+        })
+
+        // Implement smooth scrolling
+        document.documentElement.style.scrollBehavior = "smooth";
+    </script>
+</body>
+
+</html>
